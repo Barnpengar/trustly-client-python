@@ -419,23 +419,25 @@ class SignedAPI(trustly.api.api.API):
         return self.call(data)
 
     def charge(self, accountid, notificationurl, enduserid, messageid,
-            amount, currency, shopperstatement=None):
+            amount, currency, shopperstatement=None, email=None):
 
         attributes = dict(
                 ShopperStatement=shopperstatement
                 )
 
-        data = trustly.data.jsonrpcrequest.JSONRPCRequest(method='Charge',
-                data=dict(
-                    AccountID=accountid,
-                    NotificationURL=notificationurl,
-                    EndUserID=enduserid,
-                    MessageID=messageid,
-                    Amount=amount,
-                    Currency=currency
-                    ),
-                attributes=attributes
-                )
+        data = trustly.data.jsonrpcrequest.JSONRPCRequest(
+            method='Charge',
+            data=dict(
+                AccountID=accountid,
+                NotificationURL=notificationurl,
+                EndUserID=enduserid,
+                MessageID=messageid,
+                Amount=amount,
+                Currency=currency,
+                Email=email,
+                ),
+            attributes=attributes,
+            )
         return self.call(data)
 
     def hello(self):
