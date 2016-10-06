@@ -422,8 +422,9 @@ class SignedAPI(trustly.api.api.API):
             amount, currency, shopperstatement=None, email=None):
 
         attributes = dict(
-                ShopperStatement=shopperstatement
-                )
+                ShopperStatement=shopperstatement,
+                Email=email,
+            )
 
         data = trustly.data.jsonrpcrequest.JSONRPCRequest(
             method='Charge',
@@ -434,17 +435,14 @@ class SignedAPI(trustly.api.api.API):
                 MessageID=messageid,
                 Amount=amount,
                 Currency=currency,
-                Email=email,
                 ),
             attributes=attributes,
             )
         return self.call(data)
 
     def hello(self):
-            # The hello call is not signed, use an unsigned API to do the request and then void it 
+        # The hello call is not signed, use an unsigned API to do the request and then void it
         api = trustly.api.unsigned.UnsignedAPI(username=self.api_username, password=self.api_password,
                 host=self.api_host, port=self.api_port, is_https=self.api_is_https)
 
         return api.hello()
-
-# vim: set et cindent ts=4 ts=4 sw=4:
