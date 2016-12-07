@@ -260,7 +260,7 @@ class SignedAPI(trustly.api.api.API):
             failurl=None, templateurl=None, urltarget=None,
             mobilephone=None, firstname=None, lastname=None,
             holdnotifications=None, email=None, dateofbirth=None,
-            requestdirectdebitmandate=None, urlscheme=None):
+            requestdirectdebitmandate=None, urlscheme=None, nationalidentificationnumber=None):
 
         attributes = dict(
                 Locale=locale,
@@ -274,7 +274,8 @@ class SignedAPI(trustly.api.api.API):
                 Firstname=firstname,
                 Lastname=lastname,
                 Email=email,
-                DateOfBirth=dateofbirth
+                DateOfBirth=dateofbirth,
+                NationalIdentificationNumber=nationalidentificationnumber,
                 )
 
         if urlscheme:
