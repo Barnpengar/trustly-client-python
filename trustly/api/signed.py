@@ -121,6 +121,10 @@ class SignedAPI(trustly.api.api.API):
 
         return super(SignedAPI, self).call(request)
 
+    def balance(self):
+        request = trustly.data.jsonrpcrequest.JSONRPCRequest(method='Balance')
+        return self.call(request)
+
     def deposit(self, notificationurl, enduserid, messageid,
             locale=None, amount=None, currency=None, country=None, ip=None,
             successurl=None, failurl=None, templateurl=None, urltarget=None,
