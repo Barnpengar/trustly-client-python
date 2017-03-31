@@ -190,7 +190,8 @@ class SignedAPI(trustly.api.api.API):
             holdnotifications=None, email=None, dateofbirth=None,
             addresscountry=None,
             addresspostalcode=None, addresscity=None,
-            addressline1=None, addressline2=None):
+            addressline1=None, addressline2=None, suggestedminamount=None,
+            suggestedmaxamount=None):
 
         attributes = dict(
                 Locale=locale,
@@ -211,7 +212,9 @@ class SignedAPI(trustly.api.api.API):
                 AddressCity=addresscity,
                 AddressLine1=addressline1,
                 AddressLine2=addressline2,
-                Address=address
+                Address=address,
+                SuggestedMinAmount=suggestedminamount,
+                SuggestedMaxAmount=suggestedmaxamount,
                 )
 
         if holdnotifications:
