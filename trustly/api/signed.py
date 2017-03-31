@@ -135,7 +135,8 @@ class SignedAPI(trustly.api.api.API):
             email=None, shippingaddresscountry=None,
             shippingaddresspostalcode=None, shippingaddresscity=None,
             shippingaddressline1=None, shippingaddressline2=None,
-            shippingaddress=None, unchangeablenationalidentificationnumber=None):
+            shippingaddress=None, unchangeablenationalidentificationnumber=None,
+            chargeaccountid=None):
 
         attributes = dict(
                 Locale=locale,
@@ -161,7 +162,8 @@ class SignedAPI(trustly.api.api.API):
                 ShippingAddressCity=shippingaddresscity,
                 ShippingAddressLine1=shippingaddressline1,
                 ShippingAddressLine2=shippingaddressline2,
-                ShippingAddress=shippingaddress
+                ShippingAddress=shippingaddress,
+                ChargeAccountID=chargeaccountid,
                 )
 
         if holdnotifications:
