@@ -25,6 +25,8 @@ THE SOFTWARE.
 import http.client
 import uuid
 import base64
+from datetime import datetime
+
 from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import SHA
 from Crypto.PublicKey import RSA
@@ -451,11 +453,16 @@ class SignedAPI(trustly.api.api.API):
         return self.call(data)
 
     def account_ledger(self, from_date, to_date, currency=None):
+        if isinstance(from_date, datetime):
+            from_date = from_date.date()
+        if isinstance(to_date, datetime):
+            to_date = to_date.date()
+
         data = trustly.data.jsonrpcrequest.JSONRPCRequest(
             method='AccountLedger',
             data=dict(
-                FromDate=from_date,
-                ToDate=to_date,
+                FromDate=from_date.isoformat(),
+                ToDate=to_date.isoformat(),
                 currency=currency,
             )
         )
