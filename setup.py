@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='trustly',
-        version='0.2.5',
+        version='0.2.6',
         description='Trustly API Python client',
         url='http://github.com/trustly/trustly-client-python',
         author='Per lejontand',
